@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Pessoa{% endblock %}
+
+{% block content %}
+    <h1>Editar Pessoa</h1>
+    <form method="POST" action="{{ url_for('main.editarPessoa', id=pessoa.id) }}">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" class="form-control" id="nome" name="nome" value="{{ pessoa.nome }}" required>
+        </div>
+        <div class="form-group">
+            <label for="cpf">CPF:</label>
+            <input type="text" class="form-control" id="cpf" name="cpf" value="{{ pessoa.cpf }}" required>
+        </div>
+        <div class="form-group">
+            <label for="data_nascimento">Data de Nascimento:</label>
+            <input type="date" class="form-control" id="data_nascimento" name="data_nascimento"   value="{{ pessoa.data_nascimento }}" required>
+        </div>
+        <div class="form-group col-md-4">
+            <div>
+                <label for="cnh_categ">Categoria CNH Atual: <strong>{{ pessoa.cnh_categ}}</strong>  </label>
+
+            </div>
+            <div class="form-group">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="cnh_categA" value="A" id="cnh_A">
+                    <label class="form-check-label" for="cnh_A">A</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="cnh_categB" value="B" id="cnh_B">
+                    <label class="form-check-label" for="cnh_B">B</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="cnh_categC" value="C" id="cnh_C">
+                    <label class="form-check-label" for="cnh_C">C</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="cnh_categD" value="D" id="cnh_D">
+                    <label class="form-check-label" for="cnh_D">D</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="cnh_categE" value="E" id="cnh_E">
+                    <label class="form-check-label" for="cnh_E">E</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="cnh">Numero CNH:</label>
+            <input type="text" class="form-control" id="cnh" name="cnh" value="{{ pessoa.cnh }}" required>
+        </div>
+        <div class="form-group">
+            <label for="data_vencimento_cnh">Vencimento cnh:</label>
+            <input type="date" class="form-control" id="data_vencimento_cnh" name="data_vencimento_cnh" value="{{ pessoa.data_vencimento_cnh }}"  required>
+        </div>
+
+
+
+
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastrar Empresa{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1>Cadastrar Empresa</h1>
+    
+    <h2>Dados Empresa</h2>
+    <form method="POST" action="{{ url_for('main.cadastrarEmpresa') }}">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" name="nome" value="{{ request.form['nome'] if request.form.get('nome') else nome }}" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="cpf">CNPJ:</label>
+                <input type="text" class="form-control" id="cnpj" name="cnpj" value="{{ request.form['cnpj'] if request.form.get('cnpj') else cnpj }}" required>
+            </div>
+        </div>
+        
+        <hr>
+
+        <h2>Endereço</h2>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="cep">CEP:</label>
+                <input type="text" class="form-control" id="cep" name="cep" value="{{ request.form['cep'] if request.form.get('cep') else cep }}" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="rua">Rua:</label>
+                <input type="text" class="form-control" id="rua" name="rua" value="{{ request.form['rua'] if request.form.get('rua') else rua }}" required>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="numero">Número:</label>
+                <input type="text" class="form-control" id="numero" name="numero" value="{{ request.form['numero'] if request.form.get('numero') else numero }}" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="bairro">Bairro:</label>
+                <input type="text" class="form-control" id="bairro" name="bairro" value="{{ request.form['bairro'] if request.form.get('bairro') else bairro }}" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="cidade_estado">Cidade:</label>
+                <input type="text" class="form-control" id="cidade" name="cidade" value="{{ request.form['cidade'] if request.form.get('cidade') else cidade }}" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="cidade_estado">Estado:</label>
+                <input type="text" class="form-control" id="estado" name="estado" value="{{ request.form['estado'] if request.form.get('estado') else estado }}" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ request.form['email'] if request.form.get('email') else email }}" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="telefone">Telefone:</label>
+                <input type="text" class="form-control" id="telefone" name="telefone" value="{{ request.form['telefone'] if request.form.get('telefone') else telefone }}" required>
+            </div>
+        </div>
+
+        <hr>
+
+               
+        
+
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+</div>
+{% endblock %}

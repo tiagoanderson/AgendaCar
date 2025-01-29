@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Veículo{% endblock %}
+
+{% block content %}
+<h1>Editar Empresa</h1>
+<form method="POST" action="{{ url_for('main.editarVeiculo', id=veiculo.id) }}">
+    <div class="form-group">
+        <label for="tipo">Tipo</label>
+        <select id="tipo" name="tipo" class="form-select" required>
+            <option value="1" {% if veiculo.tipo == 1 %}selected{% endif %}>Motocicleta</option>
+            <option value="2" {% if veiculo.tipo == 2 %}selected{% endif %}>Carro</option>
+            <option value="3" {% if veiculo.tipo == 3 %}selected{% endif %}>Utilitário</option>
+            <option value="4" {% if veiculo.tipo == 4 %}selected{% endif %}>Caminhão</option>
+            <option value="5" {% if veiculo.tipo == 5 %}selected{% endif %}>Outros</option>
+        </select>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="marca">Marca</label>
+        <input type="text" class="form-control" id="marca" name="marca" value="{{ veiculo.marca }}" required>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="modelo">Modelo</label>
+            <input type="text" class="form-control" id="modelo" name="modelo" value="{{ veiculo.modelo }}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="renavam">Renavam</label>
+            <input type="text" class="form-control" id="renavam" name="renavam" value="{{ veiculo.renavam }}" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="placa">Placa</label>
+            <input type="text" class="form-control" id="placa" name="placa" value="{{ veiculo.placa }}" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="chassis">Chassis</label>
+            <input type="text" class="form-control" id="chassis" name="chassis" value="{{ veiculo.chassis }}" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="proprio">Próprio ou Alugado</label>
+            <select id="proprio" name="proprio" class="form-select">
+                <option value="0" {% if veiculo.proprio == 0 %}selected{% endif %}>Próprio</option>
+                <option value="1" {% if veiculo.proprio == 1 %}selected{% endif %}>Alugado</option>
+                <option value="2" {% if veiculo.proprio == 2 %}selected{% endif %}>Outros</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="licenciamento">Licenciamento</label>
+            <input type="date" class="form-control" id="licenciamento" name="licenciamento" value="{{ veiculo.licenciamento }}">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="ipva">IPVA</label>
+            <input type="date" class="form-control" id="ipva" name="ipva" value="{{ veiculo.ipva }}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="observacao_carro">Observação</label>
+            <input type="text" class="form-control" id="observacao_carro" name="observacao_carro" value="{{ veiculo.observacao_carro }}">
+        </div>
+    </div>
+    <hr>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+{% endblock %}

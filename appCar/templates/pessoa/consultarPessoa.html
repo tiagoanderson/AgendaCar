@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Consulta Pessoa{% endblock %}
+
+{% block content %}
+    <h1>Consulta Pessoas</h1>
+    <table class="table table-striped me-auto mb-2 mb-lg-0" >
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>CNH</th>
+                <th>Vencimento CNH</th>
+                <th>Data atual</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pessoa in pessoas %}
+            <tr class="{% if pessoa.data_vencimento_cnh <= hoje %}table-danger{% endif %}">
+                <td>{{ pessoa.id }}</td>
+                <td>{{ pessoa.nome }}</td>
+                <td>{{ pessoa.cpf }}</td>
+                <td>{{ pessoa.cnh_categ }}</td>
+                <td>{{ pessoa.data_vencimento_cnh.strftime('%d/%m/%Y') }}</td>
+                <td>{{ hoje.strftime('%d/%m/%Y') }}</td>
+                <td>
+                    <a href="{{ url_for('main.editarPessoa', id=pessoa.id) }}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{{ url_for('main.deletarPessoa', id=pessoa.id) }}" class="btn btn-danger btn-sm">Deletar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

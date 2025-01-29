@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Consulta Veiculos{% endblock %}
+
+{% block content %}
+    <h1>Veiculos Cadastrados</h1>
+    <table class="table table-striped me-auto mb-2 mb-lg-0" >
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Origem</th>
+                <th>Marca</th>
+                <th>Placa</th>
+                <th>Licenciamento</th>               
+                <th>Ipva</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for veiculo in veiculos %}
+                      
+                <td>{{ veiculo.id }}</td>
+                <td>{{ get_tipo_descricao(veiculo.tipo) }}</td>
+                <td>{{ get_tipo_origem(veiculo.proprio) }}</td>
+                <td>{{ veiculo.marca }}</td>
+                <td>{{ veiculo.placa }}</td>
+                <td>{{ veiculo.licenciamento.strftime('%Y') }}</td>
+                <td>{{ veiculo.ipva.strftime('%Y') }}</td>
+                <td>
+                    <a href="{{ url_for('main.editarVeiculo',  id= veiculo.id ) }}"class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{{ url_for('main.deletarVeiculo', id= veiculo.id ) }}"class="btn btn-danger btn-sm">Deletar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

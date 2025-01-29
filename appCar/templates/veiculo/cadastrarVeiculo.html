@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastrar Veículo{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1>Cadastrar Veículo</h1>
+    
+    <h2>Dados do Veículo</h2>
+    <form method="POST" action="{{ url_for('main.cadastrarVeiculo') }}">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="tipo">Tipo</label>
+                <select id="tipo" name="tipo" class="form-select" required>
+                    <option value="1">Motocicleta</option>
+                    <option value="2">Carro</option>
+                    <option value="3">Utilitario</option>
+                    <option value="4">Caminhão</option>
+                    <option value="5">Outros</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="marca">Marca</label>
+                <input type="text" class="form-control" id="marca" name="marca" value="{{ request.form['marca'] if request.form.get('marca') else marca }}" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="modelo">Modelo</label>
+                <input type="text" class="form-control" id="modelo" name="modelo" value="{{ request.form['modelo'] if request.form.get('modelo') else modelo }}">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="renavam">Renavam</label>
+                <input type="text" class="form-control" id="renavam" name="renavam" value="{{ request.form['renavam'] if request.form.get('renavam') else renavam }}" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="placa">Placa</label>
+                <input type="text" class="form-control" id="placa" name="placa" value="{{ request.form['placa'] if request.form.get('placa') else placa }}" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="chassis">Chassis</label>
+                <input type="text" class="form-control" id="chassis" name="chassis" value="{{ request.form['chassis'] if request.form.get('chassis') else chassis }}" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="proprio">Próprio ou Alugado</label>
+                <select id="proprio" name="proprio" class="form-select" value="{{ request.form['proprio'] if request.form.get('proprio') else proprio }}">
+                    <option value="0">Próprio</option>
+                    <option value="1">Alugado</option>
+                    <option value="2">Outros</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="licenciamento">Licenciamento</label>
+                <input type="date" class="form-control" id="licenciamento" name="licenciamento" value="{{ request.form['licenciamento'] if request.form.get('licenciamento') else licenciamento }}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="ipva">IPVA</label>
+                <input type="date" class="form-control" id="ipva" name="ipva" value="{{ request.form['ipva'] if request.form.get('ipva') else ipva }}">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="observacao_pessoa">Observação</label>
+                <input type="text" class="form-control" id="observacao_carro" name="observacao_carro" value="{{ request.form['observacao_carro'] if request.form.get('observacao_carro') else observacao_carro }}">
+            </div>
+        </div>
+
+        <hr>
+        
+        <button type="submit" class="btn btn-primary">Cadastrar Veículo</button>
+    </form>
+</div>
+{% endblock %}
